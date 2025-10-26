@@ -1,15 +1,12 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99
+TARGET = student_manager
+SOURCES = td.c
 
-make
+$(TARGET): $(SOURCES)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
 
+clean:
+	rm -f $(TARGET)
 
-make run
-
-
-
-make test-top10
-make test-top3-math
-make test-save
-make test-load
-
-
-make test-all
+.PHONY: clean
