@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -g
-TARGET = grostd
+TARGET = td
 SRC = td.c
 
 all: $(TARGET)
