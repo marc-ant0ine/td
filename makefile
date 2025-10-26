@@ -1,12 +1,21 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
-TARGET = student_manager
-SOURCES = td.c
+CFLAGS = -Wall -Wextra -std=c11 -g
+TARGET = grostd
+SRC = td.c
 
-$(TARGET): $(SOURCES)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
+all: $(TARGET)
+
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) -lm
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) *.o *.bin
 
-.PHONY: clean
+run: $(TARGET)
+	./$(TARGET) data.txt
+
+test: $(TARGET)
+	./$(TARGET) data.txt --save class.bin
+	./$(TARGET) data.txt --load class.bin
+
+.PHONY: all clean run test
